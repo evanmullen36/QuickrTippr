@@ -1,0 +1,74 @@
+//
+//  ViewController.swift
+//  QuickrTippr
+//
+//  Created by Evan Mullen on 1/25/21.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var tipController: UISegmentedControl!
+ 
+    // Experiement code
+    
+    @IBOutlet weak var numberOfPeople: UITextField!
+    
+    
+    @IBOutlet weak var splitTotal: UILabel!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+
+    @IBAction func updateTip(_ sender: Any) {
+        let tipPercentages = [0.15, 0.20, 0.25]
+        
+        let bill = Double(billField.text!) ?? 0
+        let tip = bill * tipPercentages[tipController.selectedSegmentIndex]
+        let total = bill + tip
+
+        tipLabel.text = "$\(tip)"
+        
+        
+        tipLabel.text = String(format: "$%.2f",tip)
+        
+    }
+    
+    
+    @IBAction func updateTotal(_ sender: UITextField) {
+        let people = Double(numberOfPeople.text!) ?? 1
+        
+        let tipPercentages = [0.15, 0.20, 0.25]
+        let bill = Double(billField.text!) ?? 0
+        let tip = bill * tipPercentages[tipController.selectedSegmentIndex]
+        let total = bill + tip
+        
+        let split = total / people
+        
+        splitTotal.text = "$\(split)"
+    
+    
+    }
+    
+        
+      
+    
+}
+    

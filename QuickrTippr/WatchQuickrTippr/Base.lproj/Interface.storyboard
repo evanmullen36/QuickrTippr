@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchQuickrTippr" customModuleProvider="target">
+                    <items>
+                        <textField width="1" alignment="left" placeholder="Bill?" id="73n-gl-hyc">
+                            <connections>
+                                <action selector="billField:" destination="AgC-eL-Hgc" id="JqY-uL-qCF"/>
+                            </connections>
+                        </textField>
+                        <label alignment="left" id="e8J-PD-R3q"/>
+                        <table alignment="left" id="L1f-zj-0be"/>
+                        <slider width="1" alignment="left" value="5" minimum="5" maximum="25" steps="5" id="SwR-9q-vuC">
+                            <color key="color" red="0.98848026990000004" green="0.17729496959999999" blue="0.33294078710000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </slider>
+                        <group width="1" alignment="left" id="bYB-oC-gl9">
+                            <items>
+                                <label height="20" alignment="left" text="Tip:" textAlignment="justified" id="DvM-Jh-GvW">
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                </label>
+                                <label width="101" height="20" alignment="left" text="$0.00" textAlignment="right" id="Tp1-BV-aFk"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="x25-d3-R7x">
+                            <items>
+                                <label alignment="left" text="Total:" id="Vwn-7y-6QW"/>
+                                <label width="88" alignment="left" text="$0.00" textAlignment="right" id="xRg-mC-cIq"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="billField" destination="73n-gl-hyc" id="TIr-xo-vFX"/>
+                        <outlet property="tipController" destination="SwR-9q-vuC" id="HJC-sP-yb2"/>
+                        <outlet property="tipLabel" destination="Tp1-BV-aFk" id="22q-1R-R40"/>
+                        <outlet property="totalLabel" destination="xRg-mC-cIq" id="8Gv-6P-7gJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label width="79" height="20" alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WatchQuickrTippr" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="WatchQuickrTippr" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+</document>

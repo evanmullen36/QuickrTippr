@@ -1,0 +1,81 @@
+//
+//  ViewController.swift
+//  QuickrTippr
+//
+//  Created by Evan Mullen on 1/29/21.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    var quantities = [1...100]
+    @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var tipController: UISegmentedControl!
+
+    // Version 1.1
+    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var numberOfPeople: UILabel!
+    @IBOutlet weak var splitTotal: UILabel!
+    @IBOutlet weak var splitTip: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+
+    @IBAction func updateTip(_ sender: Any) {
+        let tipPercentages = [0.10, 0.15, 0.20, 0.25]
+        
+        let bill = Double(billField.text!) ?? 0
+        let tip = bill * tipPercentages[tipController.selectedSegmentIndex]
+        let total = bill + tip
+
+        tipLabel.text = "$\(tip)"
+        totalLabel.text = "$\(total)"
+        
+        tipLabel.text = String(format: "$%.2f",tip)
+        totalLabel.text = String(format: "$%.2f",total)
+     
+    }
+    
+  
+    // Version 1.1
+    
+    @IBAction func splitTotal(_ sender: UIStepper) {
+        let tipPercentages = [0.10, 0.15, 0.20, 0.25]
+        let bill = Double(billField.text!) ?? 0
+        let tip = bill * tipPercentages[tipController.selectedSegmentIndex]
+        let total = bill + tip
+        let split = total / sender.value
+        let ts = tip / sender.value
+        
+         
+        tipLabel.text = "$\(tip)"
+        totalLabel.text = "$\(total)"
+        splitTotal.text = "$\(split)"
+        splitTip.text = "$\(ts)"
+         
+         
+         tipLabel.text = String(format: "$%.2f",tip)
+         totalLabel.text = String(format: "$%.2f",total)
+         splitTotal.text = String(format: "$%.2f",split)
+        splitTip.text = String(format: "$%.2f",ts)
+
+         numberOfPeople.text = "\(Int(sender.value))"
+     
+
+    }
+}
